@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bindingAdapter="http://schemas.android.com/apk/res-auto"
+    xmlns:bindingAdapter2="http://schemas.android.com/tools">
+
+    <!-- binding object of ViewModel to the XML layout -->
+    <data>
+        <variable
+            name="viewModel"
+            type="io.github.tomgarden.mvvm.AppViewModel" />
+    </data>
+
+    <!-- Provided Linear layout for the activity components -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+
+        <!-- EditText field for the Email -->
+        <EditText
+            android:id="@+id/inEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:hint="input email"
+            android:minHeight="48dp"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:text="@={viewModel.userEmail,default=`123@gmail.com`}" />
+
+        <!-- EditText field for the password -->
+        <EditText
+            android:id="@+id/inPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:layout_marginEnd="10dp"
+            android:hint="input pwd"
+            android:inputType="textPassword"
+            android:text="@={viewModel.userPwd,default=`123456`}" />
+
+        <!-- Login Button of the activity -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="20dp"
+            android:onClick="@{(view)-> viewModel.onButtonClicked()}"
+            android:text="click_me"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            bindingAdapter2:toastMessage="@{viewModel.toastMessage, default=`default_str`}" />
+
+        <Button
+            android:id="@+id/btn_test"
+            android:layout_width="match_parent"
+            android:text="test"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+</layout>
